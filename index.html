@@ -1,26 +1,8 @@
-<!-- ========================= -->
-<!-- FILE YANG HARUS DIUPLOAD -->
-<!-- ========================= -->
-
-<!--
-background.png
-poster.jpg
-image1.jpg
-image2.jpg
-image3.jpg
-image4.jpg
--->
-
-<!-- ========================= -->
-<!-- INDEX.HTML -->
-<!-- ========================= -->
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Brook Almond Farm Run 2026</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -36,38 +18,33 @@ scroll-behavior:smooth;
 
 body{
 font-family:'Montserrat',sans-serif;
-background:#071103;
-overflow-x:hidden;
+background:#050805;
 color:white;
+overflow-x:hidden;
 position:relative;
 }
 
 /* BACKGROUND */
 
-body::before{
-content:'';
+.background{
 position:fixed;
 inset:0;
 background:
-linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.82)),
+linear-gradient(rgba(0,0,0,.78), rgba(0,0,0,.88)),
 url('background.png');
 background-size:cover;
 background-position:center;
-background-attachment:fixed;
-filter:blur(0px);
+background-repeat:no-repeat;
 z-index:-3;
-transform:scale(1.05);
 }
 
-body::after{
+.background::before{
 content:'';
-position:fixed;
+position:absolute;
 inset:0;
 background:
-radial-gradient(circle at top left, rgba(200,255,0,.15), transparent 30%),
-radial-gradient(circle at bottom right, rgba(200,255,0,.12), transparent 30%);
-z-index:-2;
-pointer-events:none;
+radial-gradient(circle at top left, rgba(179,255,0,.18), transparent 30%),
+radial-gradient(circle at bottom right, rgba(179,255,0,.15), transparent 30%);
 }
 
 /* NOISE */
@@ -76,20 +53,9 @@ pointer-events:none;
 position:fixed;
 inset:0;
 background:url('https://grainy-gradients.vercel.app/noise.svg');
-opacity:.07;
-pointer-events:none;
+opacity:.05;
 z-index:-1;
-}
-
-/* SCROLL */
-
-::-webkit-scrollbar{
-width:8px;
-}
-
-::-webkit-scrollbar-thumb{
-background:#c8ff00;
-border-radius:20px;
+pointer-events:none;
 }
 
 /* HERO */
@@ -99,60 +65,54 @@ min-height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
-padding:40px 7%;
-position:relative;
-overflow:hidden;
+padding:50px 7%;
 }
 
 .hero{
 width:100%;
-max-width:1400px;
+max-width:1300px;
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:70px;
+gap:60px;
 align-items:center;
-z-index:2;
 }
 
-.hero-left h5{
+.hero-text h5{
 color:#c8ff00;
 font-size:14px;
-letter-spacing:6px;
+letter-spacing:5px;
 margin-bottom:20px;
-animation:fadeUp 1s ease;
 }
 
-.hero-left h1{
-font-size:6rem;
+.hero-text h1{
+font-size:5rem;
 line-height:1;
 font-weight:900;
 margin-bottom:25px;
-animation:fadeUp 1.2s ease;
 }
 
-.hero-left p{
-font-size:17px;
-line-height:1.9;
+.hero-text p{
 color:#d0d0d0;
+line-height:1.9;
+font-size:16px;
 margin-bottom:35px;
-animation:fadeUp 1.4s ease;
 }
 
-.hero-btns{
+.hero-buttons{
 display:flex;
 gap:20px;
 flex-wrap:wrap;
 }
 
 .btn{
-padding:18px 34px;
+padding:18px 35px;
+border:none;
 border-radius:100px;
 font-weight:800;
-border:none;
 cursor:pointer;
-font-size:15px;
-transition:.4s;
 text-decoration:none;
+transition:.4s;
+font-size:14px;
 display:inline-flex;
 align-items:center;
 justify-content:center;
@@ -165,14 +125,14 @@ box-shadow:0 0 30px rgba(200,255,0,.5);
 }
 
 .btn-primary:hover{
-transform:translateY(-6px) scale(1.04);
-box-shadow:0 0 60px rgba(200,255,0,.8);
+transform:translateY(-5px);
+box-shadow:0 0 50px rgba(200,255,0,.8);
 }
 
 .btn-outline{
-border:1px solid rgba(255,255,255,.15);
 background:rgba(255,255,255,.06);
-backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,.1);
+backdrop-filter:blur(10px);
 color:white;
 }
 
@@ -185,11 +145,10 @@ color:black;
 
 .poster{
 position:relative;
-border-radius:35px;
+border-radius:30px;
 overflow:hidden;
-transform:rotate(4deg);
-animation:posterFloat 6s ease-in-out infinite;
-box-shadow:0 40px 90px rgba(0,0,0,.6);
+box-shadow:0 30px 80px rgba(0,0,0,.6);
+animation:float 5s ease-in-out infinite;
 }
 
 .poster img{
@@ -197,21 +156,23 @@ width:100%;
 display:block;
 }
 
-@keyframes posterFloat{
+@keyframes float{
 0%,100%{
-transform:rotate(4deg) translateY(0px);
+transform:translateY(0px);
 }
 50%{
-transform:rotate(2deg) translateY(-20px);
+transform:translateY(-15px);
 }
 }
 
-.live-tag{
+/* BADGE */
+
+.live{
 position:absolute;
 top:20px;
 left:20px;
 background:red;
-padding:10px 18px;
+padding:10px 16px;
 border-radius:100px;
 font-size:12px;
 font-weight:800;
@@ -219,48 +180,48 @@ animation:pulse 1s infinite;
 }
 
 @keyframes pulse{
-0%{box-shadow:0 0 0 0 rgba(255,0,0,.7)}
+0%{box-shadow:0 0 0 0 rgba(255,0,0,.8)}
 70%{box-shadow:0 0 0 18px rgba(255,0,0,0)}
 100%{box-shadow:0 0 0 0 rgba(255,0,0,0)}
 }
 
-/* FAKE SOLD */
+/* STOCK */
 
-.fake-stock{
+.stock{
 position:absolute;
 bottom:20px;
 right:20px;
-background:rgba(0,0,0,.75);
-backdrop-filter:blur(20px);
+background:rgba(0,0,0,.7);
 padding:18px;
-border-radius:22px;
-width:260px;
+border-radius:20px;
+backdrop-filter:blur(15px);
+width:240px;
 border:1px solid rgba(255,255,255,.08);
 }
 
-.fake-stock h4{
+.stock h4{
 color:#c8ff00;
-margin-bottom:10px;
+margin-bottom:8px;
 }
 
-.bar{
+.progress{
 height:10px;
 background:#222;
-border-radius:30px;
+border-radius:100px;
 overflow:hidden;
 margin-top:12px;
 }
 
-.bar span{
+.progress span{
 display:block;
 height:100%;
-width:94%;
-background:linear-gradient(90deg,#c8ff00,#efff85);
-animation:stockAnim 4s infinite alternate;
+width:95%;
+background:linear-gradient(90deg,#c8ff00,#f0ff9a);
+animation:loading 3s infinite alternate;
 }
 
-@keyframes stockAnim{
-from{width:89%;}
+@keyframes loading{
+from{width:88%;}
 to{width:97%;}
 }
 
@@ -270,10 +231,10 @@ to{width:97%;}
 background:#c8ff00;
 color:black;
 padding:18px 0;
+font-size:1.8rem;
+font-weight:900;
 overflow:hidden;
 white-space:nowrap;
-font-weight:900;
-font-size:2rem;
 }
 
 .marquee div{
@@ -293,71 +254,56 @@ transform:translateX(-50%);
 /* SECTION */
 
 section{
-padding:110px 7%;
-position:relative;
+padding:100px 7%;
 }
 
-.section-title{
+.title{
 text-align:center;
 margin-bottom:70px;
 }
 
-.section-title h2{
-font-size:3.4rem;
-margin-bottom:20px;
+.title h2{
+font-size:3rem;
+margin-bottom:15px;
 }
 
-.section-title p{
+.title p{
 max-width:700px;
 margin:auto;
-line-height:1.9;
-color:#d0d0d0;
+line-height:1.8;
+color:#cfcfcf;
 }
 
 /* FEATURES */
 
 .features{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
-gap:30px;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
 }
 
 .card{
 background:rgba(255,255,255,.05);
-backdrop-filter:blur(14px);
 border:1px solid rgba(255,255,255,.08);
+border-radius:25px;
 padding:35px;
-border-radius:28px;
+backdrop-filter:blur(12px);
 transition:.4s;
-position:relative;
-overflow:hidden;
 }
 
 .card:hover{
-transform:translateY(-14px);
+transform:translateY(-10px);
 border-color:#c8ff00;
-box-shadow:0 30px 70px rgba(0,0,0,.4);
-}
-
-.card::before{
-content:'';
-position:absolute;
-width:140px;
-height:140px;
-background:rgba(200,255,0,.12);
-border-radius:50%;
-top:-50px;
-right:-50px;
 }
 
 .card h3{
-margin:20px 0 15px;
+margin-bottom:15px;
 font-size:1.4rem;
 }
 
 .card p{
 line-height:1.8;
-color:#ccc;
+color:#cfcfcf;
 }
 
 /* COUNTDOWN */
@@ -366,107 +312,79 @@ color:#ccc;
 display:flex;
 justify-content:center;
 flex-wrap:wrap;
-gap:25px;
-margin-top:50px;
+gap:20px;
+margin-top:40px;
 }
 
-.time-box{
-width:170px;
-height:170px;
+.time{
+width:160px;
+height:160px;
 background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.08);
-border-radius:30px;
-backdrop-filter:blur(12px);
+border-radius:25px;
 display:flex;
 flex-direction:column;
-align-items:center;
 justify-content:center;
-animation:floating 5s ease-in-out infinite;
+align-items:center;
+backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,.08);
 }
 
-@keyframes floating{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-15px)}
-}
-
-.time-box h3{
+.time h3{
 font-size:3rem;
 color:#c8ff00;
 }
 
-.time-box span{
+.time span{
 margin-top:10px;
 color:#bbb;
 }
 
-/* TICKETS */
+/* TICKET */
 
-.ticket-wrap{
+.ticket-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:35px;
+gap:30px;
 }
 
-.ticket-card{
+.ticket{
 background:rgba(255,255,255,.05);
+border-radius:30px;
+padding:40px;
 border:1px solid rgba(255,255,255,.08);
 backdrop-filter:blur(15px);
-border-radius:35px;
-padding:40px;
 transition:.4s;
-position:relative;
-overflow:hidden;
 }
 
-.ticket-card:hover{
-transform:translateY(-15px);
+.ticket:hover{
+transform:translateY(-10px);
 border-color:#c8ff00;
 }
 
-.ticket-card::before{
-content:'';
-position:absolute;
-inset:0;
-background:linear-gradient(transparent, rgba(200,255,0,.06));
-pointer-events:none;
-}
-
-.ticket-card h3{
+.ticket h3{
 font-size:2rem;
-margin-bottom:10px;
+margin-bottom:20px;
 }
 
-.ticket-status{
+.ticket-badge{
 display:inline-block;
 background:#c8ff00;
 color:black;
-font-weight:800;
 padding:8px 18px;
-border-radius:999px;
+border-radius:100px;
 font-size:12px;
+font-weight:800;
 margin-bottom:30px;
-}
-
-.ticket-list{
-display:flex;
-flex-direction:column;
-gap:18px;
 }
 
 .ticket-item{
 display:flex;
 justify-content:space-between;
-align-items:center;
 padding:16px 20px;
 background:rgba(255,255,255,.04);
-border-radius:18px;
+border-radius:15px;
+margin-bottom:15px;
 border:1px solid rgba(255,255,255,.06);
-transition:.3s;
-}
-
-.ticket-item:hover{
-transform:scale(1.03);
-border-color:#c8ff00;
 }
 
 .ticket-item strong{
@@ -477,20 +395,20 @@ color:#c8ff00;
 
 .gallery{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
 }
 
 .gallery img{
 width:100%;
-height:340px;
+height:320px;
 object-fit:cover;
 border-radius:25px;
 transition:.5s;
 }
 
 .gallery img:hover{
-transform:scale(1.05) rotate(1deg);
+transform:scale(1.05);
 }
 
 /* FOOTER */
@@ -502,102 +420,74 @@ border-top:1px solid rgba(255,255,255,.08);
 color:#aaa;
 }
 
-/* FLOAT BTN */
+/* FLOAT BUTTON */
 
 .float-btn{
 position:fixed;
-bottom:25px;
 right:25px;
+bottom:25px;
 z-index:999;
 animation:bounce 2s infinite;
 }
 
 @keyframes bounce{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-10px)}
+0%,100%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-10px);
+}
 }
 
 /* POPUP */
 
 .popup{
 position:fixed;
-left:25px;
-bottom:25px;
+left:20px;
+bottom:20px;
 background:rgba(0,0,0,.8);
-backdrop-filter:blur(14px);
-border:1px solid rgba(255,255,255,.08);
 padding:18px 22px;
-border-radius:20px;
+border-radius:18px;
+backdrop-filter:blur(15px);
 display:flex;
-gap:14px;
+gap:12px;
 align-items:center;
 z-index:999;
-animation:popupAnim 14s infinite;
-}
-
-@keyframes popupAnim{
-0%,100%{
-opacity:0;
-transform:translateY(200px);
-}
-10%,80%{
-opacity:1;
-transform:translateY(0);
-}
+border:1px solid rgba(255,255,255,.08);
 }
 
 .dot{
-width:14px;
-height:14px;
+width:12px;
+height:12px;
 background:#c8ff00;
 border-radius:50%;
 animation:blink 1s infinite;
 }
 
 @keyframes blink{
-0%,100%{transform:scale(1)}
-50%{transform:scale(1.6)}
+0%,100%{
+transform:scale(1);
 }
-
-/* REVEAL */
-
-.reveal{
-opacity:0;
-transform:translateY(40px);
-transition:1s;
-}
-
-.reveal.active{
-opacity:1;
-transform:translateY(0);
-}
-
-@keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(50px);
-}
-to{
-opacity:1;
-transform:translateY(0);
+50%{
+transform:scale(1.5);
 }
 }
 
 /* MOBILE */
 
-@media(max-width:980px){
+@media(max-width:900px){
 
 .hero{
 grid-template-columns:1fr;
 text-align:center;
 }
 
-.hero-btns{
+.hero-buttons{
 justify-content:center;
 }
 
-.hero-left h1{
-font-size:4rem;
+.hero-text h1{
+font-size:3.2rem;
 }
 
 .poster{
@@ -607,17 +497,17 @@ margin:auto;
 
 }
 
-@media(max-width:650px){
+@media(max-width:600px){
 
-.hero-left h1{
-font-size:2.8rem;
+.hero-text h1{
+font-size:2.5rem;
 }
 
-.section-title h2{
-font-size:2.2rem;
+.title h2{
+font-size:2rem;
 }
 
-.time-box{
+.time{
 width:130px;
 height:130px;
 }
@@ -628,6 +518,7 @@ height:130px;
 </head>
 <body>
 
+<div class="background"></div>
 <div class="noise"></div>
 
 <!-- HERO -->
@@ -636,9 +527,9 @@ height:130px;
 
 <div class="hero">
 
-<div class="hero-left">
+<div class="hero-text">
 
-<h5>OPEN • 23.08.2026</h5>
+<h5>COMING SOON • 23.08.2026</h5>
 
 <h1>
 BROOK ALMOND<br>
@@ -647,18 +538,17 @@ FARM RUN
 
 <p>
 Event lari premium paling hype tahun 2026 hadir di Plaza Parkir Timur GBK.
-Visual immersive modern, race experience cinematic, music entertainment,
-dan ribuan peserta dari seluruh Indonesia.
+Visual immersive modern, cinematic race vibes, dan ribuan peserta dari seluruh Indonesia.
 </p>
 
-<div class="hero-btns">
+<div class="hero-buttons">
 
 <a href="#ticket" class="btn btn-primary">
 DAFTAR SEKARANG
 </a>
 
 <a href="#gallery" class="btn btn-outline">
-LIHAT GALLERY
+LIHAT GALERI
 </a>
 
 </div>
@@ -669,13 +559,13 @@ LIHAT GALLERY
 
 <div class="poster">
 
-<div class="live-tag">
+<div class="live">
 🔥 VIRAL EVENT
 </div>
 
 <img src="poster.jpg">
 
-<div class="fake-stock">
+<div class="stock">
 
 <h4>Tiket Hampir Habis!</h4>
 
@@ -683,7 +573,7 @@ LIHAT GALLERY
 Tersisa 48 slot lagi untuk Early Bird.
 </p>
 
-<div class="bar">
+<div class="progress">
 <span></span>
 </div>
 
@@ -708,44 +598,36 @@ BROOK ALMOND FARM RUN 2026 • GBK JAKARTA • LIMITED SLOT • REGISTER NOW •
 
 <section>
 
-<div class="section-title reveal">
+<div class="title">
 
 <h2>WHY THIS EVENT IS DIFFERENT?</h2>
 
 <p>
-Dikemas dengan konsep sport entertainment modern dan experience visual premium.
+Dikemas dengan konsep sport entertainment modern dan visual premium experience.
 </p>
 
 </div>
 
 <div class="features">
 
-<div class="card reveal">
+<div class="card">
 <h3>🏃 Premium Track</h3>
-<p>
-Jalur lari nyaman dengan ambience modern cinematic race.
-</p>
+<p>Jalur lari nyaman dengan ambience cinematic race modern.</p>
 </div>
 
-<div class="card reveal">
+<div class="card">
 <h3>🎵 Live Music</h3>
-<p>
-DJ performance dan entertainment experience yang hype.
-</p>
+<p>DJ performance dan entertainment experience yang hype.</p>
 </div>
 
-<div class="card reveal">
+<div class="card">
 <h3>🏅 Exclusive Medal</h3>
-<p>
-Medali premium dan jersey official event eksklusif.
-</p>
+<p>Medali premium dan jersey official event eksklusif.</p>
 </div>
 
-<div class="card reveal">
+<div class="card">
 <h3>📸 Aesthetic Spot</h3>
-<p>
-Spot cinematic modern untuk Instagram dan TikTok.
-</p>
+<p>Spot cinematic modern untuk Instagram dan TikTok.</p>
 </div>
 
 </div>
@@ -756,7 +638,7 @@ Spot cinematic modern untuk Instagram dan TikTok.
 
 <section>
 
-<div class="section-title reveal">
+<div class="title">
 
 <h2>COUNTDOWN EVENT</h2>
 
@@ -768,16 +650,195 @@ Jangan sampai kehabisan tiket karena antusias peserta sangat tinggi.
 
 <div class="countdown">
 
-<div class="time-box reveal">
+<div class="time">
 <h3 id="days">00</h3>
 <span>Days</span>
 </div>
 
-<div class="time-box reveal">
+<div class="time">
 <h3 id="hours">00</h3>
 <span>Hours</span>
 </div>
 
-<div class="time-box reveal">
+<div class="time">
 <h3 id="minutes">00</h3>
-<span>Minut
+<span>Minutes</span>
+</div>
+
+<div class="time">
+<h3 id="seconds">00</h3>
+<span>Seconds</span>
+</div>
+
+</div>
+
+</section>
+
+<!-- TICKET -->
+
+<section id="ticket">
+
+<div class="title">
+
+<h2>EARLY BIRD OPEN-NOW</h2>
+
+<p>
+Pilih kategori tiket sesuai race category kamu.
+</p>
+
+</div>
+
+<div class="ticket-grid">
+
+<div class="ticket">
+
+<h3>5K CATEGORY</h3>
+
+<div class="ticket-badge">
+LIMITED SLOT
+</div>
+
+<div class="ticket-item">
+<span>5K Pelajar</span>
+<strong>Rp. 150.000</strong>
+</div>
+
+<div class="ticket-item">
+<span>5K Umum</span>
+<strong>Rp. 185.000</strong>
+</div>
+
+<div class="ticket-item">
+<span>5K Master</span>
+<strong>Rp. 210.000</strong>
+</div>
+
+</div>
+
+<div class="ticket">
+
+<h3>10K CATEGORY</h3>
+
+<div class="ticket-badge">
+BEST SELLER
+</div>
+
+<div class="ticket-item">
+<span>10K Pelajar</span>
+<strong>Rp. 220.000</strong>
+</div>
+
+<div class="ticket-item">
+<span>10K Umum</span>
+<strong>Rp. 250.000</strong>
+</div>
+
+<div class="ticket-item">
+<span>10K Master</span>
+<strong>Rp. 270.000</strong>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- GALLERY -->
+
+<section id="gallery">
+
+<div class="title">
+
+<h2>EVENT GALLERY</h2>
+
+<p>
+Cinematic race vibes dan modern event experience.
+</p>
+
+</div>
+
+<div class="gallery">
+
+<img src="image1.jpg">
+
+<img src="image2.jpg">
+
+<img src="image3.jpg">
+
+<img src="image4.jpg">
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<h2 style="font-size:2rem;color:#c8ff00;margin-bottom:20px;">
+BROOK ALMOND FARM RUN 2026
+</h2>
+
+<p>
+Plaza Parkir Timur GBK • 23 Agustus 2026
+</p>
+
+<br>
+
+<p>
+© 2026 Brook Almond Farm Run. All Rights Reserved.
+</p>
+
+</footer>
+
+<!-- FLOAT BUTTON -->
+
+<a href="#ticket" class="float-btn btn btn-primary">
+⚡ REGISTER NOW
+</a>
+
+<!-- POPUP -->
+
+<div class="popup">
+
+<div class="dot"></div>
+
+<div>
+<strong>Rizky dari Jakarta</strong><br>
+baru saja membeli tiket 10K Umum.
+</div>
+
+</div>
+
+<script>
+
+/* COUNTDOWN */
+
+const targetDate = new Date("August 23, 2026 00:00:00").getTime();
+
+setInterval(()=>{
+
+const now = new Date().getTime();
+
+const distance = targetDate - now;
+
+const days = Math.floor(distance / (1000*60*60*24));
+
+const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+
+const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+
+const seconds = Math.floor((distance % (1000*60)) / 1000);
+
+document.getElementById("days").innerHTML = days;
+document.getElementById("hours").innerHTML = hours;
+document.getElementById("minutes").innerHTML = minutes;
+document.getElementById("seconds").innerHTML = seconds;
+
+},1000);
+
+</script>
+
+</body>
+</html>
