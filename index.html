@@ -1,885 +1,783 @@
+<!-- ========================= -->
+<!-- FILE YANG HARUS DIUPLOAD -->
+<!-- ========================= -->
+
+<!--
+background.png
+poster.jpg
+image1.jpg
+image2.jpg
+image3.jpg
+image4.jpg
+-->
+
+<!-- ========================= -->
+<!-- INDEX.HTML -->
+<!-- ========================= -->
+
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Brook Almond Farm Run 2026</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      scroll-behavior:smooth;
-    }
-
-    :root{
-      --primary:#c8ff00;
-      --dark:#071103;
-      --dark2:#0d1b07;
-      --light:#f4ffe3;
-      --glass:rgba(255,255,255,0.06);
-    }
-
-    body{
-      font-family:'Montserrat',sans-serif;
-      background:var(--dark);
-      color:white;
-      overflow-x:hidden;
-    }
-
-    body::before{
-      content:'';
-      position:fixed;
-      inset:0;
-      background:
-      radial-gradient(circle at top left, rgba(200,255,0,.18), transparent 30%),
-      radial-gradient(circle at bottom right, rgba(200,255,0,.14), transparent 30%);
-      pointer-events:none;
-      z-index:-1;
-    }
-
-    .noise{
-      position:fixed;
-      inset:0;
-      opacity:.06;
-      background-image:url('https://grainy-gradients.vercel.app/noise.svg');
-      z-index:-1;
-      animation:noise 0.3s infinite;
-    }
-
-    @keyframes noise{
-      0%{transform:translate(0,0)}
-      25%{transform:translate(1px,-1px)}
-      50%{transform:translate(-1px,1px)}
-      75%{transform:translate(1px,1px)}
-      100%{transform:translate(0,0)}
-    }
-
-    header{
-      min-height:100vh;
-      position:relative;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      overflow:hidden;
-    }
-
-    .hero-bg{
-      position:absolute;
-      inset:0;
-      background:
-      linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.85)),
-      url('https://images.unsplash.com/photo-1552674605-db6ffd4facb5?q=80&w=1974&auto=format&fit=crop');
-      background-size:cover;
-      background-position:center;
-      transform:scale(1.1);
-      animation:zoomBg 15s ease-in-out infinite alternate;
-    }
-
-    @keyframes zoomBg{
-      from{transform:scale(1.1)}
-      to{transform:scale(1.2)}
-    }
-
-    .floating-circle{
-      position:absolute;
-      border-radius:50%;
-      background:rgba(200,255,0,.08);
-      backdrop-filter:blur(10px);
-      animation:float 8s infinite ease-in-out;
-    }
-
-    .c1{width:220px;height:220px;top:10%;left:5%;}
-    .c2{width:120px;height:120px;bottom:15%;right:10%;animation-delay:2s;}
-    .c3{width:180px;height:180px;top:20%;right:15%;animation-delay:4s;}
-
-    @keyframes float{
-      0%,100%{transform:translateY(0px)}
-      50%{transform:translateY(-30px)}
-    }
-
-    .hero-content{
-      position:relative;
-      z-index:2;
-      width:90%;
-      max-width:1200px;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:60px;
-      align-items:center;
-    }
-
-    .left h5{
-      color:var(--primary);
-      letter-spacing:5px;
-      margin-bottom:15px;
-      animation:fadeInUp 1s ease forwards;
-    }
-
-    .left h1{
-      font-size:5rem;
-      line-height:1;
-      margin-bottom:20px;
-      animation:fadeInUp 1.3s ease forwards;
-    }
-
-    .left p{
-      color:#c9d1c4;
-      line-height:1.8;
-      margin-bottom:35px;
-      animation:fadeInUp 1.6s ease forwards;
-    }
-
-    .hero-btns{
-      display:flex;
-      gap:18px;
-      flex-wrap:wrap;
-    }
-
-    .btn{
-      padding:18px 30px;
-      border-radius:60px;
-      border:none;
-      font-weight:800;
-      cursor:pointer;
-      transition:.4s;
-      font-size:15px;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-    }
-
-    .btn-primary{
-      background:var(--primary);
-      color:#000;
-      box-shadow:0 0 30px rgba(200,255,0,.5);
-    }
-
-    .btn-primary:hover{
-      transform:translateY(-5px) scale(1.03);
-      box-shadow:0 0 50px rgba(200,255,0,.9);
-    }
-
-    .btn-outline{
-      border:2px solid rgba(255,255,255,.2);
-      color:white;
-      backdrop-filter:blur(10px);
-      background:rgba(255,255,255,.05);
-    }
-
-    .btn-outline:hover{
-      background:white;
-      color:black;
-    }
-
-    .poster-card{
-      position:relative;
-      border-radius:30px;
-      overflow:hidden;
-      transform:rotate(4deg);
-      animation:cardFloat 5s ease-in-out infinite;
-      box-shadow:0 40px 90px rgba(0,0,0,.5);
-    }
-
-    @keyframes cardFloat{
-      0%,100%{transform:rotate(4deg) translateY(0px)}
-      50%{transform:rotate(2deg) translateY(-20px)}
-    }
-
-    .poster-card img{
-      width:100%;
-      display:block;
-    }
-
-    .live-badge{
-      position:absolute;
-      top:20px;
-      left:20px;
-      background:red;
-      padding:10px 16px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:700;
-      animation:pulse 1s infinite;
-    }
-
-    @keyframes pulse{
-      0%{box-shadow:0 0 0 0 rgba(255,0,0,.8)}
-      70%{box-shadow:0 0 0 18px rgba(255,0,0,0)}
-      100%{box-shadow:0 0 0 0 rgba(255,0,0,0)}
-    }
-
-    .ticket-alert{
-      position:absolute;
-      bottom:20px;
-      right:20px;
-      background:rgba(0,0,0,.75);
-      padding:15px;
-      border-radius:20px;
-      backdrop-filter:blur(10px);
-      border:1px solid rgba(255,255,255,.1);
-      width:240px;
-    }
-
-    .ticket-alert h4{
-      color:var(--primary);
-      margin-bottom:8px;
-    }
-
-    .progress{
-      width:100%;
-      height:10px;
-      background:#222;
-      border-radius:20px;
-      overflow:hidden;
-      margin-top:10px;
-    }
-
-    .progress span{
-      display:block;
-      width:92%;
-      height:100%;
-      background:linear-gradient(90deg, #b9ff00, #faff85);
-      animation:progressAnim 3s infinite alternate;
-    }
-
-    @keyframes progressAnim{
-      from{width:87%}
-      to{width:96%}
-    }
-
-    section{
-      padding:100px 8%;
-      position:relative;
-    }
-
-    .section-title{
-      text-align:center;
-      margin-bottom:70px;
-    }
-
-    .section-title h2{
-      font-size:3rem;
-      margin-bottom:15px;
-    }
-
-    .section-title p{
-      color:#c7c7c7;
-      max-width:700px;
-      margin:auto;
-      line-height:1.8;
-    }
-
-    .features{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:30px;
-    }
-
-    .feature-card{
-      background:var(--glass);
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:28px;
-      padding:35px;
-      transition:.4s;
-      backdrop-filter:blur(14px);
-      position:relative;
-      overflow:hidden;
-    }
-
-    .feature-card::before{
-      content:'';
-      position:absolute;
-      width:120px;
-      height:120px;
-      background:rgba(200,255,0,.15);
-      border-radius:50%;
-      top:-40px;
-      right:-40px;
-    }
-
-    .feature-card:hover{
-      transform:translateY(-12px);
-      border-color:rgba(200,255,0,.4);
-      box-shadow:0 20px 50px rgba(0,0,0,.4);
-    }
-
-    .feature-card h3{
-      margin:20px 0 15px;
-      font-size:1.3rem;
-    }
-
-    .feature-card p{
-      color:#c4c4c4;
-      line-height:1.7;
-    }
-
-    .countdown{
-      display:flex;
-      justify-content:center;
-      gap:25px;
-      flex-wrap:wrap;
-      margin-top:50px;
-    }
-
-    .time-box{
-      width:160px;
-      height:160px;
-      border-radius:30px;
-      background:rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.08);
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      backdrop-filter:blur(12px);
-      animation:float 5s infinite ease-in-out;
-    }
-
-    .time-box h3{
-      font-size:3rem;
-      color:var(--primary);
-    }
-
-    .time-box span{
-      margin-top:10px;
-      color:#ccc;
-      font-weight:600;
-    }
-
-    .pricing-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:35px;
-      margin-top:60px;
-    }
-
-    .price-card{
-      background:linear-gradient(145deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      border-radius:35px;
-      padding:45px;
-      border:1px solid rgba(255,255,255,.08);
-      position:relative;
-      overflow:hidden;
-      transition:.4s;
-    }
-
-    .price-card:hover{
-      transform:translateY(-15px) scale(1.02);
-      border-color:rgba(200,255,0,.5);
-    }
-
-    .popular{
-      border:2px solid var(--primary);
-      box-shadow:0 0 40px rgba(200,255,0,.2);
-    }
-
-    .popular-badge{
-      position:absolute;
-      top:20px;
-      right:-35px;
-      background:var(--primary);
-      color:black;
-      font-weight:800;
-      padding:10px 40px;
-      transform:rotate(45deg);
-      font-size:12px;
-    }
-
-    .price-card h4{
-      font-size:1.6rem;
-      margin-bottom:20px;
-    }
-
-    .price{
-      font-size:3rem;
-      font-weight:900;
-      color:var(--primary);
-      margin-bottom:25px;
-    }
-
-    .price-card ul{
-      list-style:none;
-      margin-bottom:35px;
-    }
-
-    .price-card ul li{
-      padding:10px 0;
-      border-bottom:1px solid rgba(255,255,255,.08);
-      color:#ddd;
-    }
-
-    .running-text{
-      white-space:nowrap;
-      overflow:hidden;
-      background:var(--primary);
-      color:black;
-      font-weight:900;
-      padding:18px 0;
-      font-size:2rem;
-    }
-
-    .running-text div{
-      display:inline-block;
-      animation:marquee 20s linear infinite;
-    }
-
-    @keyframes marquee{
-      from{transform:translateX(0)}
-      to{transform:translateX(-50%)}
-    }
-
-    .gallery{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:20px;
-    }
-
-    .gallery img{
-      width:100%;
-      border-radius:25px;
-      height:320px;
-      object-fit:cover;
-      transition:.5s;
-    }
-
-    .gallery img:hover{
-      transform:scale(1.05) rotate(1deg);
-    }
-
-    footer{
-      padding:70px 8%;
-      text-align:center;
-      border-top:1px solid rgba(255,255,255,.08);
-      color:#aaa;
-    }
-
-    .floating-cta{
-      position:fixed;
-      bottom:25px;
-      right:25px;
-      z-index:999;
-      animation:bounce 2s infinite;
-    }
-
-    @keyframes bounce{
-      0%,100%{transform:translateY(0)}
-      50%{transform:translateY(-10px)}
-    }
-
-    .fake-popup{
-      position:fixed;
-      left:25px;
-      bottom:25px;
-      background:rgba(0,0,0,.8);
-      border:1px solid rgba(255,255,255,.08);
-      backdrop-filter:blur(15px);
-      border-radius:20px;
-      padding:18px 22px;
-      display:flex;
-      align-items:center;
-      gap:15px;
-      z-index:999;
-      transform:translateY(200px);
-      animation:popup 15s infinite;
-    }
-
-    @keyframes popup{
-      0%,100%{transform:translateY(200px);opacity:0}
-      10%,80%{transform:translateY(0);opacity:1}
-    }
-
-    .dot{
-      width:14px;
-      height:14px;
-      background:var(--primary);
-      border-radius:50%;
-      animation:pulseDot 1s infinite;
-    }
-
-    @keyframes pulseDot{
-      0%{transform:scale(1)}
-      50%{transform:scale(1.5)}
-      100%{transform:scale(1)}
-    }
-
-    .reveal{
-      opacity:0;
-      transform:translateY(50px);
-      transition:1s;
-    }
-
-    .reveal.active{
-      opacity:1;
-      transform:translateY(0);
-    }
-
-    @keyframes fadeInUp{
-      from{opacity:0;transform:translateY(40px)}
-      to{opacity:1;transform:translateY(0)}
-    }
-
-    @media(max-width:980px){
-      .hero-content{
-        grid-template-columns:1fr;
-        text-align:center;
-      }
-
-      .hero-btns{
-        justify-content:center;
-      }
-
-      .left h1{
-        font-size:3.5rem;
-      }
-
-      .poster-card{
-        max-width:450px;
-        margin:auto;
-      }
-    }
-
-    @media(max-width:600px){
-      .left h1{
-        font-size:2.8rem;
-      }
-
-      .section-title h2{
-        font-size:2rem;
-      }
-
-      .time-box{
-        width:130px;
-        height:130px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Brook Almond Farm Run 2026</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Montserrat',sans-serif;
+background:#071103;
+overflow-x:hidden;
+color:white;
+position:relative;
+}
+
+/* BACKGROUND */
+
+body::before{
+content:'';
+position:fixed;
+inset:0;
+background:
+linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.82)),
+url('background.png');
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+filter:blur(0px);
+z-index:-3;
+transform:scale(1.05);
+}
+
+body::after{
+content:'';
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at top left, rgba(200,255,0,.15), transparent 30%),
+radial-gradient(circle at bottom right, rgba(200,255,0,.12), transparent 30%);
+z-index:-2;
+pointer-events:none;
+}
+
+/* NOISE */
+
+.noise{
+position:fixed;
+inset:0;
+background:url('https://grainy-gradients.vercel.app/noise.svg');
+opacity:.07;
+pointer-events:none;
+z-index:-1;
+}
+
+/* SCROLL */
+
+::-webkit-scrollbar{
+width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+background:#c8ff00;
+border-radius:20px;
+}
+
+/* HERO */
+
+header{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:40px 7%;
+position:relative;
+overflow:hidden;
+}
+
+.hero{
+width:100%;
+max-width:1400px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:70px;
+align-items:center;
+z-index:2;
+}
+
+.hero-left h5{
+color:#c8ff00;
+font-size:14px;
+letter-spacing:6px;
+margin-bottom:20px;
+animation:fadeUp 1s ease;
+}
+
+.hero-left h1{
+font-size:6rem;
+line-height:1;
+font-weight:900;
+margin-bottom:25px;
+animation:fadeUp 1.2s ease;
+}
+
+.hero-left p{
+font-size:17px;
+line-height:1.9;
+color:#d0d0d0;
+margin-bottom:35px;
+animation:fadeUp 1.4s ease;
+}
+
+.hero-btns{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:18px 34px;
+border-radius:100px;
+font-weight:800;
+border:none;
+cursor:pointer;
+font-size:15px;
+transition:.4s;
+text-decoration:none;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+}
+
+.btn-primary{
+background:#c8ff00;
+color:black;
+box-shadow:0 0 30px rgba(200,255,0,.5);
+}
+
+.btn-primary:hover{
+transform:translateY(-6px) scale(1.04);
+box-shadow:0 0 60px rgba(200,255,0,.8);
+}
+
+.btn-outline{
+border:1px solid rgba(255,255,255,.15);
+background:rgba(255,255,255,.06);
+backdrop-filter:blur(12px);
+color:white;
+}
+
+.btn-outline:hover{
+background:white;
+color:black;
+}
+
+/* POSTER */
+
+.poster{
+position:relative;
+border-radius:35px;
+overflow:hidden;
+transform:rotate(4deg);
+animation:posterFloat 6s ease-in-out infinite;
+box-shadow:0 40px 90px rgba(0,0,0,.6);
+}
+
+.poster img{
+width:100%;
+display:block;
+}
+
+@keyframes posterFloat{
+0%,100%{
+transform:rotate(4deg) translateY(0px);
+}
+50%{
+transform:rotate(2deg) translateY(-20px);
+}
+}
+
+.live-tag{
+position:absolute;
+top:20px;
+left:20px;
+background:red;
+padding:10px 18px;
+border-radius:100px;
+font-size:12px;
+font-weight:800;
+animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+0%{box-shadow:0 0 0 0 rgba(255,0,0,.7)}
+70%{box-shadow:0 0 0 18px rgba(255,0,0,0)}
+100%{box-shadow:0 0 0 0 rgba(255,0,0,0)}
+}
+
+/* FAKE SOLD */
+
+.fake-stock{
+position:absolute;
+bottom:20px;
+right:20px;
+background:rgba(0,0,0,.75);
+backdrop-filter:blur(20px);
+padding:18px;
+border-radius:22px;
+width:260px;
+border:1px solid rgba(255,255,255,.08);
+}
+
+.fake-stock h4{
+color:#c8ff00;
+margin-bottom:10px;
+}
+
+.bar{
+height:10px;
+background:#222;
+border-radius:30px;
+overflow:hidden;
+margin-top:12px;
+}
+
+.bar span{
+display:block;
+height:100%;
+width:94%;
+background:linear-gradient(90deg,#c8ff00,#efff85);
+animation:stockAnim 4s infinite alternate;
+}
+
+@keyframes stockAnim{
+from{width:89%;}
+to{width:97%;}
+}
+
+/* MARQUEE */
+
+.marquee{
+background:#c8ff00;
+color:black;
+padding:18px 0;
+overflow:hidden;
+white-space:nowrap;
+font-weight:900;
+font-size:2rem;
+}
+
+.marquee div{
+display:inline-block;
+animation:marquee 18s linear infinite;
+}
+
+@keyframes marquee{
+from{
+transform:translateX(0);
+}
+to{
+transform:translateX(-50%);
+}
+}
+
+/* SECTION */
+
+section{
+padding:110px 7%;
+position:relative;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:70px;
+}
+
+.section-title h2{
+font-size:3.4rem;
+margin-bottom:20px;
+}
+
+.section-title p{
+max-width:700px;
+margin:auto;
+line-height:1.9;
+color:#d0d0d0;
+}
+
+/* FEATURES */
+
+.features{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+gap:30px;
+}
+
+.card{
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(14px);
+border:1px solid rgba(255,255,255,.08);
+padding:35px;
+border-radius:28px;
+transition:.4s;
+position:relative;
+overflow:hidden;
+}
+
+.card:hover{
+transform:translateY(-14px);
+border-color:#c8ff00;
+box-shadow:0 30px 70px rgba(0,0,0,.4);
+}
+
+.card::before{
+content:'';
+position:absolute;
+width:140px;
+height:140px;
+background:rgba(200,255,0,.12);
+border-radius:50%;
+top:-50px;
+right:-50px;
+}
+
+.card h3{
+margin:20px 0 15px;
+font-size:1.4rem;
+}
+
+.card p{
+line-height:1.8;
+color:#ccc;
+}
+
+/* COUNTDOWN */
+
+.countdown{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:25px;
+margin-top:50px;
+}
+
+.time-box{
+width:170px;
+height:170px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+border-radius:30px;
+backdrop-filter:blur(12px);
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+animation:floating 5s ease-in-out infinite;
+}
+
+@keyframes floating{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-15px)}
+}
+
+.time-box h3{
+font-size:3rem;
+color:#c8ff00;
+}
+
+.time-box span{
+margin-top:10px;
+color:#bbb;
+}
+
+/* TICKETS */
+
+.ticket-wrap{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:35px;
+}
+
+.ticket-card{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(15px);
+border-radius:35px;
+padding:40px;
+transition:.4s;
+position:relative;
+overflow:hidden;
+}
+
+.ticket-card:hover{
+transform:translateY(-15px);
+border-color:#c8ff00;
+}
+
+.ticket-card::before{
+content:'';
+position:absolute;
+inset:0;
+background:linear-gradient(transparent, rgba(200,255,0,.06));
+pointer-events:none;
+}
+
+.ticket-card h3{
+font-size:2rem;
+margin-bottom:10px;
+}
+
+.ticket-status{
+display:inline-block;
+background:#c8ff00;
+color:black;
+font-weight:800;
+padding:8px 18px;
+border-radius:999px;
+font-size:12px;
+margin-bottom:30px;
+}
+
+.ticket-list{
+display:flex;
+flex-direction:column;
+gap:18px;
+}
+
+.ticket-item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:16px 20px;
+background:rgba(255,255,255,.04);
+border-radius:18px;
+border:1px solid rgba(255,255,255,.06);
+transition:.3s;
+}
+
+.ticket-item:hover{
+transform:scale(1.03);
+border-color:#c8ff00;
+}
+
+.ticket-item strong{
+color:#c8ff00;
+}
+
+/* GALLERY */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px;
+}
+
+.gallery img{
+width:100%;
+height:340px;
+object-fit:cover;
+border-radius:25px;
+transition:.5s;
+}
+
+.gallery img:hover{
+transform:scale(1.05) rotate(1deg);
+}
+
+/* FOOTER */
+
+footer{
+padding:80px 7%;
+text-align:center;
+border-top:1px solid rgba(255,255,255,.08);
+color:#aaa;
+}
+
+/* FLOAT BTN */
+
+.float-btn{
+position:fixed;
+bottom:25px;
+right:25px;
+z-index:999;
+animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-10px)}
+}
+
+/* POPUP */
+
+.popup{
+position:fixed;
+left:25px;
+bottom:25px;
+background:rgba(0,0,0,.8);
+backdrop-filter:blur(14px);
+border:1px solid rgba(255,255,255,.08);
+padding:18px 22px;
+border-radius:20px;
+display:flex;
+gap:14px;
+align-items:center;
+z-index:999;
+animation:popupAnim 14s infinite;
+}
+
+@keyframes popupAnim{
+0%,100%{
+opacity:0;
+transform:translateY(200px);
+}
+10%,80%{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.dot{
+width:14px;
+height:14px;
+background:#c8ff00;
+border-radius:50%;
+animation:blink 1s infinite;
+}
+
+@keyframes blink{
+0%,100%{transform:scale(1)}
+50%{transform:scale(1.6)}
+}
+
+/* REVEAL */
+
+.reveal{
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(50px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* MOBILE */
+
+@media(max-width:980px){
+
+.hero{
+grid-template-columns:1fr;
+text-align:center;
+}
+
+.hero-btns{
+justify-content:center;
+}
+
+.hero-left h1{
+font-size:4rem;
+}
+
+.poster{
+max-width:500px;
+margin:auto;
+}
+
+}
+
+@media(max-width:650px){
+
+.hero-left h1{
+font-size:2.8rem;
+}
+
+.section-title h2{
+font-size:2.2rem;
+}
+
+.time-box{
+width:130px;
+height:130px;
+}
+
+}
+
+</style>
 </head>
 <body>
 
 <div class="noise"></div>
 
+<!-- HERO -->
+
 <header>
-  <div class="hero-bg"></div>
 
-  <div class="floating-circle c1"></div>
-  <div class="floating-circle c2"></div>
-  <div class="floating-circle c3"></div>
+<div class="hero">
 
-  <div class="hero-content">
+<div class="hero-left">
 
-    <div class="left">
-      <h5>COMING SOON • 23.08.2026</h5>
-      <h1>BROOK ALMOND<br>FARM RUN</h1>
+<h5>OPEN • 23.08.2026</h5>
 
-      <p>
-        Event lari paling hype tahun 2026 hadir di Plaza Parkir Timur GBK.
-        Experience premium running event dengan vibes modern, race entertainment,
-        live activation, exclusive medal, jersey premium, dan ribuan runner dari seluruh Indonesia.
-      </p>
+<h1>
+BROOK ALMOND<br>
+FARM RUN
+</h1>
 
-      <div class="hero-btns">
-        <a href="#ticket" class="btn btn-primary">DAFTAR SEKARANG</a>
-        <a href="#about" class="btn btn-outline">LIHAT DETAIL</a>
-      </div>
-    </div>
+<p>
+Event lari premium paling hype tahun 2026 hadir di Plaza Parkir Timur GBK.
+Visual immersive modern, race experience cinematic, music entertainment,
+dan ribuan peserta dari seluruh Indonesia.
+</p>
 
-    <div class="poster-card">
-      <div class="live-badge">🔥 HOT EVENT</div>
+<div class="hero-btns">
 
-      <img src="poster.jpg" alt="Brook Almond Farm Run">
-
-      <div class="ticket-alert">
-        <h4>Tiket Hampir Habis!</h4>
-        <p>Tersisa 48 slot lagi untuk Early Access.</p>
-
-        <div class="progress">
-          <span></span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</header>
-
-<div class="running-text">
-  <div>
-    • BROOK ALMOND FARM RUN 2026 • GBK JAKARTA • LIMITED SLOT • REGISTER NOW • PREMIUM EXPERIENCE •
-    BROOK ALMOND FARM RUN 2026 • GBK JAKARTA • LIMITED SLOT • REGISTER NOW • PREMIUM EXPERIENCE •
-  </div>
-</div>
-
-<section id="about">
-
-  <div class="section-title reveal">
-    <h2>WHY THIS EVENT IS DIFFERENT?</h2>
-    <p>
-      Dibuat dengan konsep modern race experience yang menggabungkan sport,
-      entertainment, visual immersive, dan komunitas lifestyle.
-    </p>
-  </div>
-
-  <div class="features">
-
-    <div class="feature-card reveal">
-      <h3>🏃 Premium Race Track</h3>
-      <p>
-        Jalur lari nyaman dengan vibes night-run modern dan full visual ambience.
-      </p>
-    </div>
-
-    <div class="feature-card reveal">
-      <h3>🎵 Live Entertainment</h3>
-      <p>
-        DJ performance, music stage, dan crowd experience yang bikin event lebih hidup.
-      </p>
-    </div>
-
-    <div class="feature-card reveal">
-      <h3>🏅 Exclusive Finisher Medal</h3>
-      <p>
-        Dapatkan medal premium edition dan race jersey eksklusif official event.
-      </p>
-    </div>
-
-    <div class="feature-card reveal">
-      <h3>📸 Social Media Spot</h3>
-      <p>
-        Banyak spot aesthetic cinematic untuk foto dan konten Instagram/TikTok.
-      </p>
-    </div>
-
-  </div>
-
-</section>
-
-<section>
-
-  <div class="section-title reveal">
-    <h2>COUNTDOWN TO RACE DAY</h2>
-    <p>
-      Jangan sampai kehabisan tiket karena antusias peserta sangat tinggi.
-    </p>
-  </div>
-
-  <div class="countdown">
-
-    <div class="time-box reveal">
-      <h3 id="days">00</h3>
-      <span>Days</span>
-    </div>
-
-    <div class="time-box reveal">
-      <h3 id="hours">00</h3>
-      <span>Hours</span>
-    </div>
-
-    <div class="time-box reveal">
-      <h3 id="minutes">00</h3>
-      <span>Minutes</span>
-    </div>
-
-    <div class="time-box reveal">
-      <h3 id="seconds">00</h3>
-      <span>Seconds</span>
-    </div>
-
-  </div>
-
-</section>
-
-<section id="ticket">
-
-  <div class="section-title reveal">
-    <h2>REGISTER PACKAGE</h2>
-    <p>
-      Pilih kategori tiket terbaik untuk pengalaman event yang lebih maksimal.
-    </p>
-  </div>
-
-  <div class="pricing-grid">
-
-    <div class="price-card reveal">
-      <h4>EARLY RUNNER</h4>
-      <div class="price">149K</div>
-
-      <ul>
-        <li>✔ Race BIB</li>
-        <li>✔ Finisher Medal</li>
-        <li>✔ Water Station</li>
-        <li>✔ Official Documentation</li>
-      </ul>
-
-      <a href="#" class="btn btn-outline">PILIH PAKET</a>
-    </div>
-
-    <div class="price-card popular reveal">
-
-      <div class="popular-badge">BEST SELLER</div>
-
-      <h4>VIP EXPERIENCE</h4>
-      <div class="price">349K</div>
-
-      <ul>
-        <li>✔ Premium Jersey</li>
-        <li>✔ VIP Race Kit</li>
-        <li>✔ Exclusive Medal</li>
-        <li>✔ Lounge Access</li>
-        <li>✔ Priority Queue</li>
-      </ul>
-
-      <a href="#" class="btn btn-primary">PALING POPULER</a>
-    </div>
-
-    <div class="price-card reveal">
-      <h4>GROUP PACK</h4>
-      <div class="price">599K</div>
-
-      <ul>
-        <li>✔ 5 Participants</li>
-        <li>✔ Group Benefits</li>
-        <li>✔ Event Merchandise</li>
-        <li>✔ Social Media Feature</li>
-      </ul>
-
-      <a href="#" class="btn btn-outline">AMBIL SEKARANG</a>
-    </div>
-
-  </div>
-
-</section>
-
-<section>
-
-  <div class="section-title reveal">
-    <h2>EVENT GALLERY</h2>
-    <p>
-      Visual experience modern dengan cinematic vibes yang bikin event makin berkelas.
-    </p>
-  </div>
-
-  <div class="gallery">
-    <img class="reveal" src="https://images.unsplash.com/photo-1486218119243-13883505764c?q=80&w=1974&auto=format&fit=crop">
-    <img class="reveal" src="https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=1974&auto=format&fit=crop">
-    <img class="reveal" src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?q=80&w=1974&auto=format&fit=crop">
-    <img class="reveal" src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=1974&auto=format&fit=crop">
-  </div>
-
-</section>
-
-<footer>
-  <h2 style="font-size:2rem;margin-bottom:15px;color:var(--primary)">
-    BROOK ALMOND FARM RUN 2026
-  </h2>
-
-  <p>Plaza Parkir Timur GBK • 23 Agustus 2026</p>
-  <br>
-  <p>© 2026 Brook Almond Farm Run. All Rights Reserved.</p>
-</footer>
-
-<a href="#ticket" class="floating-cta btn btn-primary">
-  ⚡ BOOK NOW
+<a href="#ticket" class="btn btn-primary">
+DAFTAR SEKARANG
 </a>
 
-<div class="fake-popup">
-  <div class="dot"></div>
-  <div>
-    <strong>Rizky dari Jakarta</strong><br>
-    baru saja membeli tiket VIP Experience.
-  </div>
+<a href="#gallery" class="btn btn-outline">
+LIHAT GALLERY
+</a>
+
 </div>
 
-<script>
+</div>
 
-  // COUNTDOWN
-  const targetDate = new Date("August 23, 2026 00:00:00").getTime();
+<!-- POSTER -->
 
-  setInterval(() => {
+<div class="poster">
 
-    const now = new Date().getTime();
-    const distance = targetDate - now;
+<div class="live-tag">
+🔥 VIRAL EVENT
+</div>
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+<img src="poster.jpg">
 
-    document.getElementById("days").innerHTML = days;
-    document.getElementById("hours").innerHTML = hours;
-    document.getElementById("minutes").innerHTML = minutes;
-    document.getElementById("seconds").innerHTML = seconds;
+<div class="fake-stock">
 
-  },1000);
+<h4>Tiket Hampir Habis!</h4>
 
+<p>
+Tersisa 48 slot lagi untuk Early Bird.
+</p>
 
-  // SCROLL REVEAL
-  window.addEventListener('scroll', reveal);
+<div class="bar">
+<span></span>
+</div>
 
-  function reveal(){
-    const reveals = document.querySelectorAll('.reveal');
+</div>
 
-    for(let i = 0; i < reveals.length; i++){
-      const windowHeight = window.innerHeight;
-      const elementTop = reveals[i].getBoundingClientRect().top;
-      const elementVisible = 100;
+</div>
 
-      if(elementTop < windowHeight - elementVisible){
-        reveals[i].classList.add('active');
-      }
-    }
-  }
+</div>
 
-  reveal();
+</header>
 
+<!-- MARQUEE -->
 
-  // FAKE LIVE SALES
-  const fakeNames = [
-    'Andi dari Bandung',
-    'Fajar dari Bekasi',
-    'Kevin dari Jakarta',
-    'Dina dari Surabaya',
-    'Rama dari Tangerang',
-    'Salsa dari Depok'
-  ];
+<div class="marquee">
+<div>
+• BROOK ALMOND FARM RUN 2026 • GBK JAKARTA • LIMITED SLOT • REGISTER NOW • PREMIUM EXPERIENCE •
+BROOK ALMOND FARM RUN 2026 • GBK JAKARTA • LIMITED SLOT • REGISTER NOW • PREMIUM EXPERIENCE •
+</div>
+</div>
 
-  const popup = document.querySelector('.fake-popup');
+<!-- FEATURES -->
 
-  setInterval(()=>{
-    const randomName = fakeNames[Math.floor(Math.random()*fakeNames.length)];
+<section>
 
-    popup.innerHTML = `
-      <div class="dot"></div>
-      <div>
-        <strong>${randomName}</strong><br>
-        baru saja membeli tiket VIP Experience.
-      </div>
-    `;
-  },5000);
+<div class="section-title reveal">
 
+<h2>WHY THIS EVENT IS DIFFERENT?</h2>
 
-  // CURSOR GLOW EFFECT
-  const glow = document.createElement('div');
-  glow.style.position = 'fixed';
-  glow.style.width = '250px';
-  glow.style.height = '250px';
-  glow.style.borderRadius = '50%';
-  glow.style.pointerEvents = 'none';
-  glow.style.background = 'radial-gradient(circle, rgba(200,255,0,.15), transparent 70%)';
-  glow.style.transform = 'translate(-50%, -50%)';
-  glow.style.zIndex = '-1';
-  document.body.appendChild(glow);
+<p>
+Dikemas dengan konsep sport entertainment modern dan experience visual premium.
+</p>
 
-  document.addEventListener('mousemove', e=>{
-    glow.style.left = e.clientX + 'px';
-    glow.style.top = e.clientY + 'px';
-  });
+</div>
 
-</script>
+<div class="features">
 
-</body>
-</html>
+<div class="card reveal">
+<h3>🏃 Premium Track</h3>
+<p>
+Jalur lari nyaman dengan ambience modern cinematic race.
+</p>
+</div>
+
+<div class="card reveal">
+<h3>🎵 Live Music</h3>
+<p>
+DJ performance dan entertainment experience yang hype.
+</p>
+</div>
+
+<div class="card reveal">
+<h3>🏅 Exclusive Medal</h3>
+<p>
+Medali premium dan jersey official event eksklusif.
+</p>
+</div>
+
+<div class="card reveal">
+<h3>📸 Aesthetic Spot</h3>
+<p>
+Spot cinematic modern untuk Instagram dan TikTok.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- COUNTDOWN -->
+
+<section>
+
+<div class="section-title reveal">
+
+<h2>COUNTDOWN EVENT</h2>
+
+<p>
+Jangan sampai kehabisan tiket karena antusias peserta sangat tinggi.
+</p>
+
+</div>
+
+<div class="countdown">
+
+<div class="time-box reveal">
+<h3 id="days">00</h3>
+<span>Days</span>
+</div>
+
+<div class="time-box reveal">
+<h3 id="hours">00</h3>
+<span>Hours</span>
+</div>
+
+<div class="time-box reveal">
+<h3 id="minutes">00</h3>
+<span>Minut
